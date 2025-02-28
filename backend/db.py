@@ -1,4 +1,3 @@
-from flask import jsonify
 import pymysql
 import pymysql.cursors
 import config
@@ -27,7 +26,7 @@ def ver_clientes():
     except Exception as e:
         print(Fore.RED + f"❌ Error al obtener clientes: {e}")
         print(Fore.WHITE +"")
-        return jsonify({"Error": str(e)})
+        return {"Error": str(e)}
 
 def registrar_cliente(data):
     try:

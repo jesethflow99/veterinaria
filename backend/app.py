@@ -1,21 +1,13 @@
 from flask import Flask, jsonify,redirect,url_for
-from db import registrar_cliente, ver_clientes
+from clientes.routes import client_bp
 
 app = Flask(__name__)
+app.register_blueprint(client_bp,url_prefix="/cliente")
 
 @app.route("/")
 def index():
-    return jsonify(ver_clientes())
-
-@app.route("/registrar")
-def registrar():
-    resp=registrar_cliente({
-        "id": 5567,
-        "nombre": "Gael gonzales torres",
-        "contacto": "6352330967",
-        "domicilio": "Av.tierra santa 220, 31522"
-    })
-    return jsonify(resp)
+    return jsonify({"message":"hola mundo"})
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
